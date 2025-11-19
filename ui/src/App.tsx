@@ -1,9 +1,9 @@
-import React, { ChangeEvent, JSX, ReactNode, useEffect, useRef, useState } from 'react'
-import TabletFrame from '@/components/TabletFrame'
+import { ChangeEvent, ReactNode, useEffect, useRef, useState } from 'react'
+import TabletFrame from '@/components/dev/TabletFrame'
+import PhoneFrame from '@/components/dev/PhoneFrame'
 import SharedFunctions from '@/functions/shared-functions'
 
 import './App.css'
-import PhoneFrame from '@/components/PhoneFrame'
 
 const DEV_MODE = !window?.['invokeNative']
 
