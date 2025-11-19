@@ -17,8 +17,6 @@ if (window.name === '' || DEV_MODE) {
         )
     }
 
-    console.log(1)
-
     if (DEV_MODE) {
         renderApp()
     } else {
