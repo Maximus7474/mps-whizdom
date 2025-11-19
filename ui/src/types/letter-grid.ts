@@ -6,6 +6,12 @@ export enum LetterState {
     Selected,
 }
 
+export enum Gamestate {
+    Loading,
+    Started,
+    Finished,
+}
+
 export interface LetterItem {
     letter: string;
     state: LetterState;
