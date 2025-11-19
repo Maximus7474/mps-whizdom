@@ -1,0 +1,82 @@
+.phone-frame {
+    position: relative;
+    z-index: 2;
+
+    aspect-ratio: 27.6/59;
+
+    width: 27.6em;
+    height: 59em;
+
+    border-radius: 3.75em;
+    background-color: black;
+    box-shadow: 0 0 0.2em 0.4em #050506, 0 0 0 0.5em hsl(254, 30%, 85%);
+}
+
+.phone-content {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 3.75em;
+}
+
+.phone-notch {
+    position: absolute;
+    top: 0.75em;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 2.25em;
+
+    width: 30%;
+    background-color: black;
+
+    border-radius: 1.6em;
+    cursor: pointer;
+}
+
+.phone-indicator {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0.5em;
+    margin: auto;
+
+    width: 9em;
+    height: 0.32em;
+
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.25em;
+
+    background: transparent;
+    backdrop-filter: grayscale(1) invert(1) contrast(100);
+
+    cursor: pointer;
+}
+
+.phone-time {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    padding: 1.2em 3.5em;
+
+    z-index: 9;
+
+    pointer-events: none;
+
+    font-weight: 500;
+    font-size: 1em;
+
+    color: black;
+}
