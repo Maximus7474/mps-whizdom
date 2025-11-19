@@ -10,3 +10,5 @@ export interface LetterItem {
     letter: string;
     state: LetterState;
 };
+
+export type GuessAttempt = LetterItem[][];

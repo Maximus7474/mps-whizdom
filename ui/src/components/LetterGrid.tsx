@@ -1,10 +1,10 @@
-import { DeviceType, LetterItem } from '@/types';
+import { DeviceType, GuessAttempt, LetterItem } from '@/types';
 import './LetterGrid.css';
 
 interface ILetterGrid {
     length: number;
     guesses: number;
-    attempts: (LetterItem[])[];
+    attempts: GuessAttempt;
     device: DeviceType;
 }
 
