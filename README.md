@@ -18,3 +18,6 @@ A Wordle © like application for lb-phone.
 1. Run `npm run build` to build the app. The build will be in the `dist` folder.
 2. Change the `ui_page` in the fxmanifest.lua to `"ui/dist/index.html"` (uncomment line 18 & comment out line 19)
 3. Refresh and ensure the resource
+
+## Credits
+* Random word list: https://random-words-api.kushcreates.com
