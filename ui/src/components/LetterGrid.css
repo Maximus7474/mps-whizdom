@@ -1,0 +1,77 @@
+.letter-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 20px auto;
+    width: fit-content;
+}
+
+.letter-grid.phone {
+    gap: 0.25rem;
+}
+
+.letter-grid.tablet {
+    gap: 0.75rem;
+}
+
+.letter-row.tablet {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.letter-row.phone {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 2px solid #3a3a3c;
+    user-select: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.tile.phone {
+    width: 3rem;
+    height: 3rem;
+}
+
+.tile.tablet {
+    width: 4rem;
+    height: 4rem;
+}
+
+.tile.state-0 {
+    background-color: transparent;
+    border-color: #3a3a3c;
+    color: #3a3a3c;
+}
+
+.tile.state-1 {
+    background-color: #3a3a3c;
+    border-color: #3a3a3c;
+}
+
+.tile.state-2 {
+    background-color: #b59f3b;
+    border-color: #b59f3b;
+}
+
+.tile.state-3 {
+    background-color: #538d4e;
+    border-color: #538d4e;
+}
+
+.tile.state-4 {
+    background-color: transparent;
+    border-color: #3a3a3c;
+    border: 0.25rem solid #3a3a3c;
+    border-radius: 0.5rem;
+}
