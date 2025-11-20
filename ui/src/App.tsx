@@ -6,7 +6,7 @@ import { DeviceType } from './types'
 import { DEV_MODE } from './utils/misc'
 
 import Page from './components/PageView'
-import { GamePage } from './pages'
+import { GamePage, HomePage } from './pages'
 
 import './App.css'
 
@@ -34,6 +34,10 @@ const App = () => {
                         }}
                     >
                         <Routes>
+                            <Route
+                                path='/'
+                                element={<Page children={<HomePage device={device} />} />}
+                            />
                             <Route
                                 path='game'
                                 element={<Page children={<GamePage device={device} />} />}
