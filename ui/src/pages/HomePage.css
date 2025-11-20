@@ -1,0 +1,29 @@
+/* .homepage {
+} */
+
+.home-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-header > h1.phone {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.home-header > h1.tablet {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.home-header > img.text-banner.phone {
+    width: 16rem;
+    margin: 0.5rem auto;
+}
+
+.home-header > img.text-banner.tablet {
+    width: 35rem;
+    margin: 0.5rem auto;
+}
