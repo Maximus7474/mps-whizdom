@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { HashRouter } from 'react-router-dom'
 import App from '@/App'
 
 import './colors.css'
@@ -12,7 +13,9 @@ if (window.name === '' || DEV_MODE) {
     const renderApp = () => {
         root.render(
             <React.StrictMode>
-                <App />
+                <HashRouter>
+                    <App />
+                </HashRouter>
             </React.StrictMode>
         )
     }

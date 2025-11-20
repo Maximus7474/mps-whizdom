@@ -7,6 +7,7 @@ import { DEV_MODE } from './utils/misc'
 import { GamePage } from './pages'
 
 import './App.css'
+import { HashRouter, Link, Route, Router, Routes } from 'react-router-dom'
 
 const App = () => {
     useEffect(() => {
@@ -31,7 +32,10 @@ const App = () => {
                             height: DEV_MODE ? '100%' : '100vh'
                         }}
                     >
-                        <GamePage device={device} />
+                        <Routes>
+                            <Route path='game' element={<GamePage device={device} />} />
+                            <Route path='*' element={<Link to='/game'>GamePage</Link>} />
+                        </Routes>                        
                     </div>
                 </div>
             )}
