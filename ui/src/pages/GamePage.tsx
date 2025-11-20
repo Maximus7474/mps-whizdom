@@ -1,14 +1,10 @@
 import LetterGrid from "@/components/LetterGrid"
 import useKeyHook from "@/hooks/keyPress";
-import { DeviceType, Gamestate, GuessAttempt, LetterItem, LetterState } from "@/types"
+import { DeviceType, Gamestate, GuessAttempt, IPageProps, LetterItem, LetterState } from "@/types"
 import { DEBUG_WORD, MAX_ATTEMPTS, WORD_LENGTH } from "@/utils/data";
 import { fetchNui } from "@/utils/fetchNui";
 import { DEV_MODE } from "@/utils/misc";
 import { useEffect, useState } from "react";
-
-interface IGamePageProps {
-    device: DeviceType;
-}
 
 interface SessionAttempt {
     attempts: GuessAttempt;
@@ -32,7 +28,7 @@ const DEBUG_ATTEMPTS = [
     ],
 ];
 
-const GamePage = ({ device }: IGamePageProps) => {
+const GamePage = ({ device }: IPageProps) => {
     const [attempts, setAttempts] = useState<GuessAttempt>(DEV_MODE ? DEBUG_ATTEMPTS : []);
     const [guess, setGuess] = useState<string>('');
     const [gameState, setGamestate] = useState<Gamestate>(Gamestate.Loading);
