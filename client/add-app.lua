@@ -6,31 +6,6 @@ CURRENT_DEVICE = nil
 local resourceName = GetCurrentResourceName()
 local appOpen = false
 
-local function SendDirection()
-    Wait(500) -- allow the app to initialize
-
-    local directions = { "N", "NE", "E", "SE", "S", "SW", "W", "NW" }
-    local oldYaw, direction
-
-    while appOpen do
-        Wait(0)
-
-        local yaw = math.floor(360.0 - ((GetFinalRenderedCamRot(0).z + 360.0) % 360.0) + 0.5)
-
-        if yaw == 360 then
-            yaw = 0
-        end
-
-        -- get closest direction
-        if oldYaw ~= yaw then
-            oldYaw = yaw
-            direction = yaw .. "° " .. directions[math.floor((yaw + 22.5) / 45.0) % 8 + 1]
-
-            SendAppMessage("updateDirection", direction)
-        end
-    end
-end
-
 local mediaUrl
 local url = GetResourceMetadata(resourceName, "ui_page", 0)
 
@@ -49,7 +24,7 @@ local appData = {
     developer = "LB Scripts",
 
     ui = url:find("http") and url or "https://cfx-nui-" .. resourceName .. "/" .. url,
-    icon = mediaUrl .. "/icon.svg",
+    icon = mediaUrl .. "/icon.png",
 
     fixBlur = true,
 
@@ -63,8 +38,6 @@ local appData = {
         end
 
         appOpen = true
-
-        Citizen.CreateThreadNow(SendDirection)
     end,
 
     onClose = function()
