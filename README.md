@@ -2,6 +2,8 @@
 
 A Wordle © like application for lb-phone.
 
+![alt text](https://github.com/Maximus7474/mps-whizdom/blob/main/designs/TextBanner.png?raw=true)
+
 ## Installing modules
 
 1. Install [bun](https://bun.com/docs/installation)
