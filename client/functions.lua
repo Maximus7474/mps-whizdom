@@ -1,12 +1,9 @@
----@param action string
----@param data any
-function SendAppMessage(action, data)
-    if CURRENT_DEVICE == "tablet" then
-        exports["lb-tablet"]:SendCustomAppMessage(Config.Identifier, action, data)
-    elseif CURRENT_DEVICE == "phone" then
-        exports["lb-phone"]:SendCustomAppMessage(Config.Identifier, {
-            action = action,
-            data = data
-        })
+function AwaitCallback(event, ...)
+    if IsResourceAvailable('lb-phone') then
+        return exports["lb-phone"]:AwaitCallback(event, ...)
+    elseif IsResourceAvailable('lb-tablet') then
+        return exports["lb-tablet"]:AwaitCallback(event, ...)
+    else
+        error('Nor lb-tablet or lb-phone is present, this resource will not work', 0)
     end
 end
