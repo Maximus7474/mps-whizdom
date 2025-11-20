@@ -1,13 +1,14 @@
-import { ReactNode, useEffect, useRef } from 'react'
+import { type ReactNode, useEffect, useRef } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import TabletFrame from '@/components/dev/TabletFrame'
 import PhoneFrame from '@/components/dev/PhoneFrame'
 import { DeviceType } from './types'
 import { DEV_MODE } from './utils/misc'
 
+import Page from './components/PageView'
 import { GamePage } from './pages'
 
 import './App.css'
-import { HashRouter, Link, Route, Router, Routes } from 'react-router-dom'
 
 const App = () => {
     useEffect(() => {
@@ -33,8 +34,14 @@ const App = () => {
                         }}
                     >
                         <Routes>
-                            <Route path='game' element={<GamePage device={device} />} />
-                            <Route path='*' element={<Link to='/game'>GamePage</Link>} />
+                            <Route
+                                path='game'
+                                element={<Page children={<GamePage device={device} />} />}
+                            />
+                            <Route
+                                path='*'
+                                element={<Page children={<p>Wooooops</p>} />}
+                            />
                         </Routes>                        
                     </div>
                 </div>
