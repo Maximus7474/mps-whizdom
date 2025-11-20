@@ -7,6 +7,7 @@ description "A wordle like app for LB phone & tablet."
 author "Maximus7474"
 
 shared_script "config.lua"
+shared_script "shared/*.lua"
 client_script "client/**.lua"
 server_script "server/**.lua"
 
