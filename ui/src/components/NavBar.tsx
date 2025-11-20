@@ -19,11 +19,11 @@ const navItems: {
         location: '/game',
         icon: <WholeWord />,
     },
-    {
-        name: 'profile',
-        location: '/profile',
-        icon: <User2 />
-    }
+    // {
+    //     name: 'profile',
+    //     location: '/profile',
+    //     icon: <User2 />
+    // }
 ]
 
 const NavBar = () => {
