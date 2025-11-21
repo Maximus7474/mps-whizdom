@@ -7,6 +7,9 @@ local availableLocales = {
     it = true,
 }
 
+---Obtain a word from the kushcreates random word API
+---@param localeKey string
+---@return string
 local function getWord(localeKey)
     if not availableLocales[localeKey] then
         localeKey = Config.Locale.Code
