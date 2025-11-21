@@ -1,36 +1,51 @@
----@param source number
----@param device Device
----@return string?
-local function GetEquippedDeviceId(source, device)
-    if device == "tablet" then
-        return exports["lb-tablet"]:GetEquippedTablet(source)
-    elseif device == "phone" then
-        return exports["lb-phone"]:GetEquippedPhoneNumber(source)
+local sessionWord = {}
+local availableLocales = {
+    en = true,
+    es = true,
+    ['hi-la'] = true,
+    de = true,
+    it = true,
+}
+
+local function getWord(localeKey)
+    if not availableLocales[localeKey] then
+        localeKey = Config.Locale.Code
     end
+
+    if sessionWord[localeKey] then
+        return sessionWord[localeKey]
+    end
+
+    local wordPromise = promise.new()
+
+    PerformHttpRequest(
+        string.format(
+            'https://random-words-api.kushcreates.com/api?language=%s&length=%d&type=lowercase&words=1%s',
+            localeKey, Config.WordSelection.Length,
+            Config.WordSelection.Category and string.format('&category=%s', Config.WordSelection.Category) or ''
+        ),
+        function (status, body, headers, errorData)
+            if status ~= 200 then
+                error(string.format('Unable to find a word for locale key: %s - %s', localeKey, errorData))
+            end
+
+            local words = json.decode(body)
+
+            wordPromise:resolve(words[1].word)
+        end,
+        'GET'
+    )
+
+    local word = Citizen.Await(wordPromise)
+
+    if type(word) ~= "string" then
+        error(string.format('Failed to get a word for %s locale', localeKey))
+    end
+
+    sessionWord[localeKey] = word
+
+    return word
 end
 
----@param device Device
----@param message string
-RegisterNetEvent("lb-combined-reactts:notification", function(device, message)
-    local src = source
-    local deviceId = GetEquippedDeviceId(src, device)
-
-    if not deviceId then
-        return
-    end
-
-    if device == "tablet" then
-        exports["lb-tablet"]:SendNotification({
-            tabletId = deviceId,
-            app = Config.Identifier,
-            title = Config.Name,
-            content = message,
-        })
-    elseif device == "phone" then
-        exports["lb-phone"]:SendNotification(deviceId, {
-            app = Config.Identifier,
-            title = Config.Name,
-            content = message,
-        })
     end
 end)
