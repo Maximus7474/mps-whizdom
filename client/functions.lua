@@ -1,3 +1,7 @@
+---Trigger server callback
+---@param event string
+---@param ... unknown
+---@return unknown
 function AwaitCallback(event, ...)
     if IsResourceAvailable('lb-phone') then
         return exports["lb-phone"]:AwaitCallback(event, ...)
