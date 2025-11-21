@@ -6,6 +6,8 @@ title "MPS WhizDom"
 description "A wordle like app for LB phone & tablet."
 author "Maximus7474"
 
+server_script "@oxmysql/lib/MySQL.lua"
+
 shared_script "config.lua"
 shared_script "shared/*.lua"
 client_script "client/**.lua"
