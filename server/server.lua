@@ -6,6 +6,8 @@ local availableLocales = {
     de = true,
     it = true,
 }
+local accountAttempts = {}
+local currentAccounts = {}
 
 ---Obtain a word from the kushcreates random word API
 ---@param localeKey string
@@ -50,5 +52,39 @@ local function getWord(localeKey)
     return word
 end
 
+---Create a temporary username
+---@return string
+local function tempUsername()
+    local current_time = os.time()
+    return string.format('user_%d', current_time)
+end
+
+---Get the account associated with the device
+---@param source number
+---@param device 'phone'|'tablet'
+---@param deviceId string
+---@return string
+local function getAccount(source, device, deviceId)
+    if currentAccounts[deviceId] then
+        return currentAccounts[deviceId]
     end
-end)
+
+    local account = MySQL.query.await(
+        'SELECT `account` FROM `whizdom_connected_accounts` WHERE `device` = ? AND `device_id` = ?', {
+        device, deviceId
+    })
+
+    local tempAccount = false
+    if not account then
+        account = tempUsername()
+        tempAccount = true
+    end
+
+    currentAccounts[deviceId] = {
+        source = source,
+        account = account,
+        temporary = tempAccount,
+    }
+
+    return account
+end
