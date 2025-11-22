@@ -1,8 +1,17 @@
-# WhizDom
+<p align="center">
+  <img src="https://github.com/Maximus7474/mps-whizdom/blob/main/designs/TextBanner.png?raw=true">
+</p>
 
-A Wordle © like application for lb-phone.
+<hr />
 
-![alt text](https://github.com/Maximus7474/mps-whizdom/blob/main/designs/TextBanner.png?raw=true)
+<p align="center">
+  A Wordle © like application for lb-phone.
+</p>
+<p align="center">
+  <img src="https://img.shields.io/github/downloads/Maximus7474/mps-whizdom/total?logo=github">
+  <img src="https://img.shields.io/github/v/release/Maximus7474/mps-whizdom?logo=github">
+</p>
+  
 
 ## WhizDom Screenshots
 
