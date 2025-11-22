@@ -45,7 +45,7 @@ jobs:
 
       - name: Run build script
         run: bun run build
-        working-directory: web
+        working-directory: ui
 
       - name: Update repository
         run: |
