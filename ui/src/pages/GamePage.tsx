@@ -13,18 +13,18 @@ interface SessionAttempt {
 
 const DEBUG_ATTEMPTS = [
     [
-        { letter: 'A', state: LetterState.Invalid }, 
-        { letter: 'B', state: LetterState.Invalid }, 
-        { letter: 'C', state: LetterState.Invalid }, 
-        { letter: 'D', state: LetterState.Invalid }, 
+        { letter: 'C', state: LetterState.Invalid },
+        { letter: 'R', state: LetterState.Invalid },
+        { letter: 'A', state: LetterState.Invalid },
+        { letter: 'N', state: LetterState.Invalid },
         { letter: 'E', state: LetterState.Missplaced },
     ],
     [
-        { letter: 'E', state: LetterState.Missplaced }, 
-        { letter: 'F', state: LetterState.Invalid },
-        { letter: 'G', state: LetterState.Invalid },
-        { letter: 'H', state: LetterState.Missplaced },
-        { letter: 'I', state: LetterState.Invalid },
+        { letter: 'H', state: LetterState.Correct }, 
+        { letter: 'O', state: LetterState.Missplaced },
+        { letter: 'L', state: LetterState.Correct },
+        { letter: 'E', state: LetterState.Missplaced },
+        { letter: 'S', state: LetterState.Invalid },
     ],
 ];
 

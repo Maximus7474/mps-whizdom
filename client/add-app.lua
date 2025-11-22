@@ -24,7 +24,7 @@ local appData = {
     developer = "LB Scripts",
 
     ui = url:find("http") and url or "https://cfx-nui-" .. resourceName .. "/" .. url,
-    icon = mediaUrl .. "/icon.png",
+    icon = mediaUrl .. "/icon.webp",
 
     fixBlur = true,
 
