@@ -6,8 +6,15 @@ local availableLocales = {
     de = true,
     it = true,
 }
-local accountAttempts = {}
 local currentAccounts = {}
+local ATTEMPTS <const> = 6
+local LetterState = {
+    Pending = 0,
+    Invalid = 1,
+    Missplaced = 2,
+    Correct = 3,
+    Selected = 4,
+}
 
 ---Obtain a word from the kushcreates random word API
 ---@param localeKey string
@@ -90,3 +97,59 @@ local function getAccount(source, device, deviceId)
 
     return account
 end
+
+---@param source number
+---@param device "tablet"|"phone"
+---@param deviceId string
+---@param payload { action: "init"|"newGuess", data?: any }
+RegisterCallback("nui:game", function (source, device, deviceId, payload)
+    local action, data = payload.action, payload.data
+    local account = getAccount(source, device, deviceId)
+    local accountData = currentAccounts[account]
+
+    if action == "init" then
+        local attempts = accountData.attempts
+
+        return {
+            attempts = attempts,
+            finished = #attempts >= ATTEMPTS,
+        }
+    elseif action == "newGuess" then
+        local guess = data.guess
+        local localeKey = accountData.locale
+        local wordToGuess = getWord(localeKey)
+        local correction = {}
+
+        for i = 1, wordToGuess:len() do
+            local base, guessLetter = wordToGuess:sub(i,i), guess:sub(i,i)
+
+            if base == guessLetter then
+                table.insert(correction, {
+                letter = guessLetter,
+                state = LetterState.Correct,
+                })
+            elseif string.find(wordToGuess, guessLetter, 1, true) ~= nil then
+                table.insert(correction, {
+                letter = guessLetter,
+                state = LetterState.Missplaced,
+                })
+            else
+                table.insert(correction, {
+                letter = guessLetter,
+                state = LetterState.Invalid,
+                })
+            end
+        end
+
+        table.insert(accountData.attempts, correction)
+
+        return {
+            correction = correction,
+            finished = #accountData.attempts >= ATTEMPTS,
+        }
+    end
+end)
+
+CreateThread(function ()
+    getWord(Config.Locale.Code)
+end)
