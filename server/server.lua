@@ -69,7 +69,7 @@ local function getAccount(source, device, deviceId)
         return currentAccounts[deviceId]
     end
 
-    local account = MySQL.query.await(
+    local account = MySQL.single.await(
         'SELECT `account` FROM `whizdom_connected_accounts` WHERE `device` = ? AND `device_id` = ?', {
         device, deviceId
     })
