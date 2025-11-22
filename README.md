@@ -4,6 +4,20 @@ A Wordle © like application for lb-phone.
 
 ![alt text](https://github.com/Maximus7474/mps-whizdom/blob/main/designs/TextBanner.png?raw=true)
 
+## WhizDom Screenshots
+
+<details>
+  <summary>lb-phone</summary>
+  <img src="ui/public/screenshots/phone/phone-1.webp" alt="WhizDom Screenshot 1: Homepage" height="450">
+  <img src="ui/public/screenshots/phone/phone-2.webp" alt="WhizDom Screenshot 2: Game Screen" height="450">
+</details>
+
+<details>
+  <summary>lb-tablet</summary>
+  <img src="ui/public/screenshots/tablet/tablet-1.webp" alt="WhizDom Screenshot 1: Homepage" width="450">
+  <img src="ui/public/screenshots/tablet/tablet-2.webp" alt="WhizDom Screenshot 2: Game Screen" width="450">
+</details>
+
 ## Installing modules
 
 1. Install [bun](https://bun.com/docs/installation)
