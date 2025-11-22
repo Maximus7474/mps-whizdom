@@ -1,6 +1,7 @@
 :root {
     --background-primary: #f5f5f5;
     --background-highlight: rgb(220, 220, 220);
+    --background-highlight-2: rgba(220, 220, 220, 0.2);
 
     --text-primary: #000000;
     --text-secondary: #8e8e93;
@@ -9,6 +10,7 @@
 [data-theme='dark'] {
     --background-primary: #000000;
     --background-highlight: rgb(20, 20, 20);
+    --background-highlight-2: rgba(20, 20, 20, 0.2);
 
     --text-primary: #f2f2f7;
     --text-secondary: #6f6f6f;
