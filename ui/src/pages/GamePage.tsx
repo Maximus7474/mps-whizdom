@@ -65,9 +65,9 @@ const GamePage = ({ device }: IPageProps) => {
 
         } else {
             try {
-                const response = await fetchNui<{correction: LetterItem[]; finished: boolean }>('game', { action: 'newGuess', data: { guess } });
+                const response = await fetchNui<{attempts: GuessAttempt; finished: boolean }>('game', { action: 'newGuess', data: { guess } });
 
-                setAttempts(prev => [...prev, response.correction]);
+                setAttempts(response.attempts);
                 setGuess('');
 
                 if (response.finished) setGamestate(Gamestate.Finished);

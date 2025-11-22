@@ -152,7 +152,7 @@ RegisterCallback("nui:game", function (source, device, deviceId, payload)
         table.insert(accountData.attempts, correction)
 
         return {
-            correction = correction,
+            attempts = accountData.attempts,
             finished = correctLetters == wordToGuess:len() or #accountData.attempts >= ATTEMPTS,
         }
     end
