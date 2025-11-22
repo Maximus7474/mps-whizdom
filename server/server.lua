@@ -80,10 +80,12 @@ local function getAccount(source, device, deviceId)
         tempAccount = true
     end
 
-    currentAccounts[deviceId] = {
+    currentAccounts[account] = {
         source = source,
         account = account,
         temporary = tempAccount,
+        locale = Config.Locale.Code,
+        attempts = {},
     }
 
     return account
