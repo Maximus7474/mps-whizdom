@@ -15,6 +15,7 @@ Config.Locale = {
     Code = 'en',
     -- If a user is using another locale, an adequate word will show.
     -- So if the Code is set to 'en' but the user has german on his phone, he'll get a german word.
+    -- This is not yet implemented.
     AllowVariousLocales = false,
 }
 
