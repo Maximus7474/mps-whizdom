@@ -87,7 +87,7 @@ const GamePage = ({ device }: IPageProps) => {
         if (isLetter) {
             setGuess(prev => {
                 if (prev.length >= WORD_LENGTH) return prev;
-                return `${prev}${key.toUpperCase()}`;
+                return `${prev}${key.toLowerCase()}`;
             });
         } else if (key === 'Backspace') {
             setGuess(prev => {
