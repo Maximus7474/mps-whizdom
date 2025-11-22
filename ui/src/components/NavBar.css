@@ -6,7 +6,7 @@
     z-index: 50;
     padding-bottom: 1rem;
     background-color: var(--color-white);
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.08); 
+    box-shadow: 0 -4px 10px var(--background-highlight-2); 
 }
 
 .nav-list {
@@ -51,9 +51,9 @@
     text-transform: capitalize;
 }
 
-.nav-link.active {
-    color: var(--color-primary-600);
+.nav-item.active {
     font-weight: 600;
-    background-color: var(--color-primary-50);
-    transform: scale(1.05);
+    border-radius: 0.75rem;
+    border: 2px var(--background-highlight) solid;
+    text-decoration: underline;
 }

@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.home-header > h1 {
+    color: var(--text-primary);
+}
+
 .home-header > h1.phone {
     text-align: center;
     font-size: 2rem;
