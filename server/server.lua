@@ -54,6 +54,8 @@ local function getWord(localeKey)
         error(string.format('Failed to get a word for %s locale', localeKey))
     end
 
+    -- print(string.format('Obtained word "%s" for locale: %s', word, localeKey))
+
     sessionWord[localeKey] = word
 
     return word
@@ -118,25 +120,26 @@ RegisterCallback("nui:game", function (source, device, deviceId, payload)
         local guess = data.guess
         local localeKey = accountData.locale
         local wordToGuess = getWord(localeKey)
-        local correction = {}
+        local correction, correctLetters = {}, 0
 
         for i = 1, wordToGuess:len() do
             local base, guessLetter = wordToGuess:sub(i,i), guess:sub(i,i)
 
             if base == guessLetter then
                 table.insert(correction, {
-                letter = guessLetter,
-                state = LetterState.Correct,
+                    letter = guessLetter,
+                    state = LetterState.Correct,
                 })
+                correctLetters += 1
             elseif string.find(wordToGuess, guessLetter, 1, true) ~= nil then
                 table.insert(correction, {
-                letter = guessLetter,
-                state = LetterState.Missplaced,
+                    letter = guessLetter,
+                    state = LetterState.Missplaced,
                 })
             else
                 table.insert(correction, {
-                letter = guessLetter,
-                state = LetterState.Invalid,
+                    letter = guessLetter,
+                    state = LetterState.Invalid,
                 })
             end
         end
@@ -145,7 +148,7 @@ RegisterCallback("nui:game", function (source, device, deviceId, payload)
 
         return {
             correction = correction,
-            finished = #accountData.attempts >= ATTEMPTS,
+            finished = correctLetters == wordToGuess:len() or #accountData.attempts >= ATTEMPTS,
         }
     end
 end)
