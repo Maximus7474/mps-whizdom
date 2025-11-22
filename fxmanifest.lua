@@ -10,13 +10,13 @@ server_script "@oxmysql/lib/MySQL.lua"
 
 shared_script "config.lua"
 shared_script "shared/*.lua"
-client_script "client/**.lua"
-server_script "server/**.lua"
+client_script "client/*.lua"
+server_script "server/*.lua"
 
 files {
     "ui/dist/**",
     "ui/icon.png"
 }
 
--- ui_page "ui/dist/index.html"
-ui_page "http://localhost:3000"
+ui_page "ui/dist/index.html"
+-- ui_page "http://localhost:3000"
