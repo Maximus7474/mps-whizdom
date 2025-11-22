@@ -44,7 +44,9 @@ jobs:
           sed -i "/^version/c\\version '${{ steps.get_vars.outputs.VERSION }}'" fxmanifest.lua
 
       - name: Run build script
-        run: bun run build
+        run: |
+          bun install
+          bun run build
         working-directory: ui
 
       - name: Update repository
