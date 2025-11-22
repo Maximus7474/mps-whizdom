@@ -36,9 +36,7 @@ export async function fetchNui<T = unknown>(
 
     if (DEV_MODE && mockData) return mockData;
 
-    const resourceName = (window as any).GetParentResourceName
-        ? (window as any).GetParentResourceName()
-        : "nui-frame-app";
+    const resourceName = (window as any).resourceName ?? 'mps-whizdom';
 
     const resp = await fetch(`https://${resourceName}/${eventName}`, options);
 
