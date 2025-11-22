@@ -26,11 +26,11 @@ Config.WordSelection = {
 
 Config.Screenshots = {
     Phone = {
-        "screenshots/phone/screenshot-dark.webp",
-        "screenshots/phone/screenshot-light.webp"
+        "screenshots/phone/phone-1.webp",
+        "screenshots/phone/phone-2.webp"
     },
     Tablet = {
-        "screenshots/tablet/screenshot-dark.webp",
-        "screenshots/tablet/screenshot-light.webp"
+        "screenshots/tablet/tablet-1.webp",
+        "screenshots/tablet/tablet-2.webp"
     }
 }
