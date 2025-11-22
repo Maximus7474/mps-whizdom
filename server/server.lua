@@ -6,7 +6,7 @@ local availableLocales = {
     de = true,
     it = true,
 }
-local currentAccounts = {}
+local currentAccounts, devices = {}, {}
 local ATTEMPTS <const> = 6
 local LetterState = {
     Pending = 0,
@@ -74,11 +74,12 @@ end
 ---@param deviceId string
 ---@return string
 local function getAccount(source, device, deviceId)
-    if currentAccounts[deviceId] then
-        return currentAccounts[deviceId]
+    local account = devices[deviceId]
+    if account and currentAccounts[account] then
+        return account
     end
 
-    local account = MySQL.single.await(
+    account = account or MySQL.single.await(
         'SELECT `account` FROM `whizdom_connected_accounts` WHERE `device` = ? AND `device_id` = ?', {
         device, deviceId
     })
@@ -89,13 +90,17 @@ local function getAccount(source, device, deviceId)
         tempAccount = true
     end
 
-    currentAccounts[account] = {
-        source = source,
-        account = account,
-        temporary = tempAccount,
-        locale = Config.Locale.Code,
-        attempts = {},
-    }
+    devices[deviceId] = account
+
+    if not currentAccounts[account] then
+        currentAccounts[account] = {
+            source = source,
+            account = account,
+            temporary = tempAccount,
+            locale = Config.Locale.Code,
+            attempts = {},
+        }
+    end
 
     return account
 end
